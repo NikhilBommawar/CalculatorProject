@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonModel } from 'src/app/model/ButtonModel';
+import { CalcService } from 'src/app/service/calc.service';
 
 
 @Component({
@@ -8,6 +9,13 @@ import { ButtonModel } from 'src/app/model/ButtonModel';
   styleUrls: ['./operation.component.css']
 })
 export class OperationComponent {
-  buttonModel : ButtonModel = new ButtonModel();
- operationButtons = this.buttonModel.operationButton;
+
+  constructor(private calcService: CalcService) { }
+
+  buttonModel: ButtonModel = new ButtonModel();
+  operationButtons = this.buttonModel.operationButton;
+
+  clickHandler(key: any) {
+    this.calcService.operationBtnHandler(key);
+  }
 }

@@ -1,0 +1,17 @@
+.numbtn{
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+    float: left;
+    border-radius: 30px;
+}
+
+.numcontainer{
+    width :250px
+}
+
+#num0{
+    width : 170px;
+    margin-left: 10px;
+    
+}

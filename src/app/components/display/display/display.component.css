@@ -1,0 +1,14 @@
+#display{
+    margin: 30px 20px;
+    height: 60px;
+    border-color: rgb(185, 13, 219);
+   border-radius: 20px;
+    border-style:double;
+     border-width: 5px;
+     color: rgb(28, 7, 112);
+     font-family :Georgia, 'Times New Roman', Times, serif;
+     font-weight: bolder;
+     font-size: large;
+     font-variant: normal;
+
+}

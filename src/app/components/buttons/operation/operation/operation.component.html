@@ -1,6 +1,7 @@
-<div class="container">
+<div class="container opcontainer">
     <div class="row">
-        <button type="button" class="btn btn-warning" *ngFor = 'let operationButton of operationButtons;let i = index;'>{{operationButton}}</button>
+        <button type="button" class="btn btn-warning opbtn" *ngFor = 'let operationButton of operationButtons;let i = index;'
+       (click)="clickHandler(operationButton)">{{operationButton}}</button>
     </div>
 </div>
 

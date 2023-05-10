@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component,ElementRef, OnInit, ViewChild } from '@angular/core';
+import {  Component,ElementRef, Input, ViewChild } from '@angular/core';
 
 // import { DisplayServiceService } from 'src/app/service/display-service.service';
 
@@ -8,32 +8,8 @@ import { AfterViewChecked, AfterViewInit, Component,ElementRef, OnInit, ViewChil
   styleUrls: ['./display.component.css'],
  
 })
-export class DisplayComponent {
- 
+export class DisplayComponent  {
+   @Input()
+  displayContent : any = ' ';
   
-  displayContent :string = "";
-  
-  
-// @ViewChild('displayContent')
-//   display!: ElementRef;
- 
-  // ngAfterViewInit(): void {
-  //  
-  // }
-  
- getDisplayfromComponent(){
-  return this.displayContent;
- }
-
- 
- setDisplayInComponent(content : string){
-  this.displayContent =content;
-  console.log("i am content ----->"+content)
-  // console.log(this.display.nativeElement)
- }
-  
-
- pressMe(){
-  this.displayContent = 'it is coming';
- }
 }

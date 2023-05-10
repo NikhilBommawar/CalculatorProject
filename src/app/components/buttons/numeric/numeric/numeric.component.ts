@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonModel } from 'src/app/model/ButtonModel';
-import { DisplayServiceService } from 'src/app/service/display-service.service';
-import { DisplayComponent } from 'src/app/components/display/display/display.component';
+import { CalcService } from 'src/app/service/calc.service';
 
 
 @Component({
@@ -11,20 +10,16 @@ import { DisplayComponent } from 'src/app/components/display/display/display.com
 })
 
 export class NumericComponent {
+  constructor(private calcService:CalcService){}
   buttonModel : ButtonModel = new ButtonModel();
-  displayComponent : DisplayComponent = new DisplayComponent();
+  
+
   numericButtons = this.buttonModel.numericButton;
 
   displayContent : any;
 
-  constructor(private displayService: DisplayServiceService){
 
+  clickHandler(key : any){
+    this.calcService.numBtnHandler(key);
   }
-
-  doNumeric(numeric : any){
-    console.log(numeric)
-  this.displayContent = this.displayService.getDisplayContent();
-  // this.displayComponent.setDisplayInComponent(this.displayContent + numeric +'');
-  this.displayService.setDisplayContent(this.displayContent + numeric+'');
-}
 }
