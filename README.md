@@ -1,3 +1,10 @@
+
+
+<img width="363" alt="Screenshot 2023-05-10 165733" src="https://github.com/NikhilBommawar/CalculatorProject/assets/112411540/1d719fe7-6014-4283-b2cb-97164f09c2e7">
+
+
+
+
 # Calc
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
