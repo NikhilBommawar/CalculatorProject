@@ -20,9 +20,8 @@ export class CalcComponent {
   }
 
   evaluate(value : string) {
-    console.log(value)
-    this.backend.eval(value);
-   
+    this.backend.eval(value).subscribe((response: any)  => this.value = response);
+    // this.backend.eval2(value);
     } 
 
     
