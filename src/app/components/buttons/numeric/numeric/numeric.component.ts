@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CalcComponent } from 'src/app/components/calc/calc.component';
 import { ButtonModel } from 'src/app/model/ButtonModel';
 import { CalcService } from 'src/app/service/calc.service';
 
@@ -10,7 +11,7 @@ import { CalcService } from 'src/app/service/calc.service';
 })
 
 export class NumericComponent {
-  constructor(private calcService:CalcService){}
+  constructor(private calcService : CalcService) { }
   buttonModel : ButtonModel = new ButtonModel();
   
 
@@ -21,5 +22,5 @@ export class NumericComponent {
 
   clickHandler(key : any){
     this.calcService.numBtnHandler(key);
-  }
+ }
 }

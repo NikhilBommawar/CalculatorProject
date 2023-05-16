@@ -1,4 +1,4 @@
-import {  Component,ElementRef, Input, ViewChild } from '@angular/core';
+import {  Component,ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 // import { DisplayServiceService } from 'src/app/service/display-service.service';
 
@@ -11,5 +11,4 @@ import {  Component,ElementRef, Input, ViewChild } from '@angular/core';
 export class DisplayComponent  {
    @Input()
   displayContent : any = ' ';
-  
 }

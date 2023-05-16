@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { InputModel } from 'src/app/model/InputModel';
 import { BackendService } from 'src/app/service/backend/backend.service';
 import { CalcService } from 'src/app/service/calc.service';
@@ -10,8 +10,8 @@ import { CalcService } from 'src/app/service/calc.service';
   providers:[CalcService,BackendService]
 })
 export class CalcComponent {
-
-  constructor(private backend : BackendService){}
+  
+ constructor(private backend : BackendService){}
  
   value : string = "0";
 
@@ -19,12 +19,20 @@ export class CalcComponent {
    this.value = value;
   }
 
-  evaluate(value : string) {
-    this.backend.eval(value).subscribe((response: any)  => this.value = response);
-    // this.backend.eval2(value);
+  getDisplay(){
+   return this.value;
+  }
+
+  evaluate(stack : any) : any{
+    this.backend.eval(stack).subscribe((response: any)  =>{
+      this.value = response;
+      console.log("response  this.value "+ this.value);
+      this.setDisplay(this.value);
+      
+    });
+    
     } 
 
-    
-  }
+ }
 
 

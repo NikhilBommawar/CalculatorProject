@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient , HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, tap } from 'rxjs';
+import { InputModel } from 'src/app/model/InputModel';
 
 @Injectable({
   providedIn: 'root'
@@ -24,18 +25,13 @@ export class BackendService {
 
   baseUrl : string = 'http://localhost:8080/home/';
 
-  eval(value : string) : any{
-    console.log(value)
-   return  this.http.post(this.baseUrl + 'calc',value);
+  eval(stack : any) : any{
+    console.log("stack in backend eval", stack ) 
+    console.log(JSON.stringify(stack))
+   return  this.http.post(this.baseUrl + 'calc',JSON.stringify(stack));
   }
 
-  eval2(value2 : string) : any {
-    console.log(this.httpOptions)
-     return this.http.post(this.baseUrl + 'calc', value2, this.httpOptions);
-      // .pipe(
-      //   tap((result) => console.log('result-->',result))
-      //   // catchError(this.handleError('error', []))
-      // );
+ 
   }
 
   // handleError(arg0: string, arg1: never[]): any {
@@ -43,7 +39,5 @@ export class BackendService {
   // }
 
 
-
-  }
 
 
