@@ -16,31 +16,32 @@ export class CalcService {
   operand !: string ;
   num !: number;
   stack :any = [] ;
+  undoStack : any =[];
   key : any;
   readonly input: any;
 
   constructor(private calcComp: CalcComponent) { }
-
-  // input : InputModel = new InputModel();
-
-  // NUMERIC BUTTON HANDLER
+// NUMERIC BUTTON HANDLER
    numBtnHandler(key: string) {
     this.value += key;
     console.log(key)
     this.calcComp.setDisplay(this.value);
   }
 
+ 
   // OPERATION BUTTON HANDLER
   operationBtnHandler(key: any) {
     this.key = key;
     if (key == '=') {
       this.pushNumber();
       console.log("The complate stack array going to backend ",this.stack);
-      this.value = this.calcComp.evaluate(this.stack);
+      this.calcComp.evaluate(this.stack);
+      this.undoStack = [...this.stack];
       this.stack.splice(0);
-    
-      
-    }
+       console.log(this.stack)
+     console.log(this.undoStack)
+     
+   }
     else {
       console.log(key)
       this.pushNumber();
@@ -48,9 +49,8 @@ export class CalcService {
       console.log(this.stack);
       this.value = "";
       this.calcComp.setDisplay(this.value);
-
-
-    }
+    
+ }
     }
 
      // FUNCTION BUTTON HANDLER
@@ -61,19 +61,32 @@ export class CalcService {
        this.stack.splice(0);
 
     }
-    else{
-     this.value = this.calcComp.getDisplay();
-     this.value = this.value.slice(0,-1);
+    else if(key === 'DEL'){
+      this.value = this.calcComp.getDisplay();
+    //  console.log(typeof(this.value));
+     let value2 = this.value + "";
+    //  console.log(typeof(value2));
+     this.value = value2.slice(0,-1);
      this.calcComp.setDisplay(this.value);
+    }
+
+    else if(key === 'UNDO'){
+      this.undoStack.pop();
+      this.undoStack.pop();
+      this.calcComp.evaluate(this.undoStack);
+
     }
 
   }
 
    pushNumber() {
+    if(this.value != ''){
      let input = new InputModel();
     input.type = "NUMBER";
-    input.value = this.value;
+    input.value = this.calcComp.getDisplay() + "";
+    console.log("input ",input)
     this.stack.push(input)
+  }
  }
 
   pushOperator(){
@@ -108,7 +121,5 @@ export class CalcService {
      
   }
 
-  resetArray() {
-     this.stack.splice(0);
-  }
+
 }
