@@ -1,23 +1,22 @@
 package Calc;
 
 public class InputModel {
+    private String type;
+   String value;
 
-    int Operand[];
-    String operation;
+   public String getType() {
+      return type;
+   }
 
-    public int[] getOperand() {
-        return Operand;
-    }
+   public void setType(String type) {
+      this.type = type;
+   }
 
-    public void setOperand(int[] operand) {
-        Operand = operand;
-    }
+   public String getValue() {
+      return value;
+   }
 
-    public String getOperation() {
-        return operation;
-    }
-
-    public void setOperation(String operation) {
-        this.operation = operation;
-    }
+   public void setValue(String value) {
+      this.value = value;
+   }
 }
