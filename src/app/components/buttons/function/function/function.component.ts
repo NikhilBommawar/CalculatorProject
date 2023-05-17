@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CalcComponent } from 'src/app/components/calc/calc.component';
+
 import { ButtonModel } from 'src/app/model/ButtonModel';
 import { CalcService } from 'src/app/service/calc.service';
 

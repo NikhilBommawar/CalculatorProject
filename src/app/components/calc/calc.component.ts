@@ -16,20 +16,21 @@ export class CalcComponent {
   value : string = "0";
 
   setDisplay(value: string) {
+    
    this.value = value;
   }
 
   getDisplay(){
+    console.log("getDisplay"+this.value)
    return this.value;
   }
 
   evaluate(stack : any) : any{
-    this.backend.eval(stack).subscribe((response: any)  =>{
-      this.value = response;
-      console.log("response  this.value "+ this.value);
-      this.setDisplay(this.value);
-      
-    });
+    const _this  = this;
+     this.backend.eval(stack).subscribe((response: any)  =>{
+      _this.value = response;
+      _this.setDisplay(_this.value);
+   });
     
     } 
 

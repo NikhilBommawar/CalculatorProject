@@ -1,7 +1,7 @@
 
 <div class="container">
     <div class="row">
-        <button type="button" class="btn btn-info funContainer" *ngFor = 'let functionButton of functionButtons;let i = index;' (click) = "clickHandler(functionButton)">{{functionButton}}</button>
+        <button type="button" id="fun{{i}}" class="btn btn-info funContainer" *ngFor = 'let functionButton of functionButtons;let i = index;' (click) = "clickHandler(functionButton)">{{functionButton}}</button>
     </div>
 </div>
 
