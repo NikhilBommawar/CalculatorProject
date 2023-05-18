@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { ButtonModel } from 'src/app/model/ButtonModel';
-import { CalcService } from 'src/app/service/calc.service';
+import { ButtonService } from 'src/app/service/button.service';
+
 
 
 @Component({
@@ -10,14 +11,14 @@ import { CalcService } from 'src/app/service/calc.service';
   styleUrls: ['./function.component.css']
 })
 export class FunctionComponent {
-constructor(private calcService : CalcService){}
+constructor(private btnService : ButtonService){}
 
   buttonModel : ButtonModel = new ButtonModel();
   functionButtons = this.buttonModel.functionButton;
 
 
   clickHandler(key : any){
-      this.calcService.functionBtnHandler(key);
+      this.btnService.functionBtnHandler(key);
    }
 
 }

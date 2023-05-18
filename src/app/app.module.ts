@@ -9,10 +9,11 @@ import { ButtonComponent } from './components/buttons/button/button.component';
 import { FunctionComponent } from './components/buttons/function/function/function.component';
 import { OperationComponent } from './components/buttons/operation/operation/operation.component';
 import { NumericComponent } from './components/buttons/numeric/numeric/numeric.component';
-import { CalcService } from './service/calc.service';
+
  import { FormsModule } from '@angular/forms';
 import { BackendService } from './service/backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonService } from './service/button.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
     
   ],
-  providers: [CalcService,BackendService],
+  providers: [BackendService,ButtonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
