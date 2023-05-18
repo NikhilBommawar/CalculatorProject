@@ -74,7 +74,6 @@ export class CalcService {
       this.undoStack.pop();
       this.undoStack.pop();
       this.calcComp.evaluate(this.undoStack);
-
     }
 
   }
@@ -84,7 +83,6 @@ export class CalcService {
      let input = new InputModel();
     input.type = "NUMBER";
     input.value = this.calcComp.getDisplay() + "";
-    console.log("input ",input)
     this.stack.push(input)
   }
  }
@@ -100,23 +98,19 @@ export class CalcService {
         break;
 
        case "-":
-          // input.type = "operator";
-          input.value = "subtract";
+           input.value = "subtract";
           break;
 
        case "*":
-            // input.type = "operator";
-            input.value = "multiply";
+           input.value = "multiply";
             break;
 
        case "/":
-              // input.type = "operator";
               input.value = "division";
               break;
 
    }
 
-   
     this.stack.push(input)
      
   }
