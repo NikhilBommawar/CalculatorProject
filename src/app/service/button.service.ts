@@ -8,18 +8,7 @@ export class ButtonService {
 
  constructor(private calcComp: CalcComponent) { }
  
-
-   key !: string;
-
-   setKey(key : string){
-     this.key = key;
-   }
-
-   getKey() : string {
-    return this.key;
-   }
-
-   numBtnHandler(key: string){
+  numBtnHandler(key: string){
     this.calcComp.numBtnHandler(key);
    }
 

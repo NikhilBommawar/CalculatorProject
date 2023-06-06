@@ -14,6 +14,8 @@ import { NumericComponent } from './components/buttons/numeric/numeric/numeric.c
 import { BackendService } from './service/backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonService } from './service/button.service';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { ButtonService } from './service/button.service';
     ButtonComponent,
     FunctionComponent,
     OperationComponent,
-    NumericComponent
+    NumericComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,

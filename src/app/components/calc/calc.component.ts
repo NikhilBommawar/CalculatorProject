@@ -1,4 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ErrorHandler, ViewChild } from '@angular/core';
+import {  Router } from '@angular/router';
 import { InputModel } from 'src/app/model/InputModel';
 import { BackendService } from 'src/app/service/backend/backend.service';
 import { ButtonService } from 'src/app/service/button.service';
@@ -11,8 +12,9 @@ import { ButtonService } from 'src/app/service/button.service';
   providers: [ BackendService, ButtonService]
 })
 export class CalcComponent {
+  errors: any;
 
-  constructor(private backend: BackendService) { }
+  constructor(private backend: BackendService, private router : Router) { }
 
   value: string = "0";
   operand !: string;
@@ -24,8 +26,7 @@ export class CalcComponent {
   undoIndex: number = 0;
 
   setDisplay(value: string) {
-
-    this.value = value;
+     this.value = value;
   }
 
   getDisplay() {
@@ -35,14 +36,23 @@ export class CalcComponent {
 
   evaluate(stack: any): any {
     // const _this = this;
-    this.backend.eval(stack).subscribe((response: any) => {
-      this.value = response;
-      this.setDisplay(this.value);
-      this.resultStack.push(response)
-      console.log("resultStack in evaluate ", this.resultStack)
-      this.undoIndex += 1;
+    this.backend.eval(stack).subscribe(
+      (response: any) => {
+          this.value = response;
+          this.setDisplay(this.value);
+          this.resultStack.push(response)
+          console.log("resultStack in evaluate ", this.resultStack)
+          this.undoIndex += 1;
+      },
+      (error: any) =>  {
+         this.errors = error;
+         console.log(error);
+         console.log("Sorry this action can only be permitted by ADMIN")
+        //  this.router.navigateByUrl("/accessDenied");
+         let msg = alert("Sorry this action can only be permitted by ADMIN")
 
-    });
+      }
+    );
 
   }
 
@@ -58,11 +68,12 @@ export class CalcComponent {
   operationBtnHandler(key: any) {
     this.key = key;
     if (key == '=') {
+      console.log("this.undoIndex in op ",this.undoIndex)
+      console.log("this.resultStack in op ",this.resultStack)
+
       if(this.undoIndex < this.resultStack.length){
         this.resultStack.splice(this.undoIndex+1)
-        console.log("undoIndex in operation ", this.undoIndex)
-        console.log("this.resultStack.length in operation ", this.resultStack.length)
-        console.log("resultStack in operation ",this.resultStack)
+        
       }
       this.pushNumber();
       console.log("The complate stack array going to backend ", this.stack);
@@ -89,6 +100,7 @@ export class CalcComponent {
       this.setDisplay(this.value);
       this.stack.splice(0);
       this.resultStack.splice(0);
+      this.undoIndex = 0;
 
     }
    
@@ -167,5 +179,7 @@ export class CalcComponent {
   }
 
 }
+
+
 
 
