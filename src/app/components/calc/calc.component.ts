@@ -49,7 +49,7 @@ export class CalcComponent {
          console.log(error);
          console.log("Sorry this action can only be permitted by ADMIN")
         //  this.router.navigateByUrl("/accessDenied");
-         let msg = alert("Sorry this action can only be permitted by ADMIN")
+         let msg = alert("Sorry this action can only be permitted to ADMIN")
 
       }
     );
