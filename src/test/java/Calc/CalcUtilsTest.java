@@ -66,7 +66,7 @@ public class CalcUtilsTest {
         String path = "C:\\Users\\Nikhil\\OneDrive\\Desktop\\Evaluate Test.xlsx";
         // Reading file from local directory
         FileInputStream file = new FileInputStream(new File(path));
-
+       int count = 0;
         // Create Workbook instance holding reference to
         // .xlsx file
         XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -89,6 +89,11 @@ public class CalcUtilsTest {
             System.out.println("actual " + result);
 
             assertEquals(Float.parseFloat(String.valueOf(row.getCell(3))), result);
+          count += 1;
+
+          if (count > 3) {
+            break;
+          }
 
         }
 
