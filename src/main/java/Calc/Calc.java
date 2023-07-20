@@ -1,5 +1,9 @@
 package Calc;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bcbe69d0608f94f3bd908fd9279db6bbb06ec4f2
 import com.fathzer.soft.javaluator.DoubleEvaluator;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,9 +33,13 @@ public class Calc extends HttpServlet {
             doOptions(request,response);
 
  // (Method 1) ----> to read json from request and convert to String using Collectors
+<<<<<<< HEAD
 
 //       String exp2 = request.getReader().lines().collect(Collectors.joining());
         String exp2 = request.getParameter("input");
+=======
+            String exp2 = request.getReader().lines().collect(Collectors.joining());
+>>>>>>> bcbe69d0608f94f3bd908fd9279db6bbb06ec4f2
             System.out.println("Got the expression from Frontend => " + exp2);
 
         Gson gson = new Gson();
@@ -46,8 +54,11 @@ public class Calc extends HttpServlet {
         int count = (int) outputList.stream().count();
         //  COUNTING THE NUMBER OF OPERATORS
         int noOfOperator = count/2;
+<<<<<<< HEAD
         boolean exception = false;
 
+=======
+>>>>>>> bcbe69d0608f94f3bd908fd9279db6bbb06ec4f2
 
 
         //  MY LOGIC - IS AT THE BOTTOM - UNDER COMMENT - JUST FOR REFERENCE
@@ -61,10 +72,13 @@ public class Calc extends HttpServlet {
                     String operator = ""; // ###########
 
      for(int index =0; index< count; index++){
+<<<<<<< HEAD
          try {
              if(outputList.get(index).getType()=="NUMBER")
                  System.out.println("type = " + Float.parseFloat(outputList.get(0).getValue()));
 
+=======
+>>>>>>> bcbe69d0608f94f3bd908fd9279db6bbb06ec4f2
             if(outputList.get(index).getType().equals("NUMBER")){
                 if(firstOperand == 0){
                     firstOperand = Float.parseFloat(outputList.get(index).getValue());
@@ -88,6 +102,7 @@ public class Calc extends HttpServlet {
             }
 
         }
+<<<<<<< HEAD
          catch(NumberFormatException e){
              response.getWriter().print("number format exception");
              exception = true;
@@ -98,6 +113,10 @@ public class Calc extends HttpServlet {
 
         System.out.println("firstOperand "+ firstOperand);
      if(!exception)
+=======
+
+        System.out.println("firstOperand "+ firstOperand);
+>>>>>>> bcbe69d0608f94f3bd908fd9279db6bbb06ec4f2
         response.getWriter().print(firstOperand);
 
      }
@@ -123,6 +142,10 @@ public class Calc extends HttpServlet {
                 operator = "/";
                 break;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bcbe69d0608f94f3bd908fd9279db6bbb06ec4f2
         }
         return operator;
     }
