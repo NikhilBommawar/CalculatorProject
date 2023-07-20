@@ -1,0 +1,6 @@
+<div class="container numcontainer">
+    <div class="row">
+        <button type="button" class="btn btn-primary numbtn" *ngFor = 'let numericButton of numericButtons;let i = index;' id="num{{numericButton}}" (click) = 'clickHandler(numericButton)'>{{numericButton}}</button>
+    </div>
+</div>
+
